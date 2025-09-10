@@ -21,7 +21,12 @@ namespace ConsoleApp1
         {
             get { return kor; }
             set { kor = value; }
+        }
 
+        public override string ToString()
+        {
+            return $"A személy neve {nev} életkora {kor}";
+        }
         /*public Szemely(string Nev, int Kor)
         {
             nev = Nev;
@@ -39,9 +44,9 @@ namespace ConsoleApp1
         {
             Szemely tanulo1 = new Szemely();
             tanulo1.Nev = "Gábor";
-            Console.WriteLine(tanulo1.Nev);
             tanulo1.Kor = 23;
-            Console.WriteLine(tanulo1.Kor);
+
+            Console.WriteLine(tanulo1);
         }
     }
 }
