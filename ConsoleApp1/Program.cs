@@ -11,6 +11,12 @@ namespace ConsoleApp1
         protected string nev;
         private int kor;
 
+        public Szemely(string name, int age)
+        {
+            nev = name;
+            kor = age;
+        }
+
         public string Nev
         {
             get { return nev; }
@@ -64,6 +70,11 @@ namespace ConsoleApp1
     {
         private string neptunkod;
 
+        public Hallgato(string name, int age, string neptuncode) : base(name, age)
+        {
+            neptunkod = neptuncode;
+        }
+
         public string NeptunKod
         {
             get { return neptunkod; }
@@ -76,11 +87,26 @@ namespace ConsoleApp1
             }
         }
 
-        public void Kiir()
+        public override string ToString()
         {
-            nev = string.Empty;
+            return $"A hallgató neve {nev}";
         }
         
+    }
+
+    public class Dolgozo : Szemely
+    {
+        private int ber;
+
+        public Dolgozo(string name, int age, int salary) : base(name, age)
+        {
+            ber = salary;
+        }
+
+        public override string ToString()
+        {
+            return $"A hallgató neve {nev} a bére {ber}
+        }
     }
     internal class Program
     {
@@ -116,6 +142,11 @@ namespace ConsoleApp1
             {
                 Console.WriteLine($"A hallgatók neve: {item.Nev}");
             }
+
+            Hallgato hallgato1 = new Hallgato("Peti", 22, "MHWLN9");
+            Console.WriteLine(hallgato1);
+
+            Dolgozo dolgozo1 = new Dolgozo("Gábor", 43, 75000);
         }
     }
 }
