@@ -62,7 +62,19 @@ namespace ConsoleApp1
 
     public class Hallgato : Szemely
     {
-        private int neptunkod;
+        private string neptunkod;
+
+        public string NeptunKod
+        {
+            get { return neptunkod; }
+            set
+            {
+                if (value.Length <= 6)
+                    neptunkod = value;
+                else
+                    Console.WriteLine("Nem megfelelő hosszúság.");
+            }
+        }
 
         public void Kiir()
         {
@@ -83,6 +95,27 @@ namespace ConsoleApp1
             Bankszamla bankszamla1 = new Bankszamla();
             bankszamla1.Egyenleg = 5700;
             Console.WriteLine(bankszamla1.Egyenleg);
+
+            Hallgato hallgato1 = new Hallgato();
+            hallgato1.NeptunKod = "MHWLN99";
+            Console.WriteLine(hallgato1.NeptunKod);
+            List<Hallgato> hallgatok = new List<Hallgato>();
+
+            for (int i = 0; i < 2; i++)
+            {
+                Hallgato hallgato = new Hallgato();
+                Console.Write($"Kérem a(z) {i + 1} hallgató nevét");
+                hallgato.Nev = Console.ReadLine();
+                Console.Write($"Kérem a(z) {i + 1} hallgató életkorát");
+                hallgato.Kor = int.Parse(Console.ReadLine() );
+                Console.Write($"Kérem a(z) {i + 1} hallgató neptunkódját");
+                hallgato.NeptunKod = Console.ReadLine();
+                hallgatok.Add( hallgato );
+            }
+            foreach (var item in hallgatok)
+            {
+                Console.WriteLine($"A hallgatók neve: {item.Nev}");
+            }
         }
     }
 }
